@@ -9,7 +9,7 @@ class RegimeController extends CI_Controller
           $this->load->model('backoffice/Regime');
      }
      
-    public function C_regime() {
+    public function C_Plat() {
     $donnees = (
         'colonne1' => 'valeur1',
         'colonne2' => 'valeur2',
