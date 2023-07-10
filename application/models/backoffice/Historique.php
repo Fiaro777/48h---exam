@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class LoginAdmin extends CI_Model
+class Historique extends CI_Model
 {
 // fonction qui prend un client si le compte existe dans la base
      public function historique_commande() {
@@ -9,4 +9,5 @@ class LoginAdmin extends CI_Model
           $query = $base->query($sql);
           return $query->result_array();
      }
+     
 }

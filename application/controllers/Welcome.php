@@ -26,5 +26,17 @@ class Welcome extends CI_Controller {
 	public function logAdmin()
 	{
 		$this->load->view('backoffice/login');
-	}		
+	}
+	public function historique()
+	{
+		$data = array();
+		$data= $this->Historique->historique_commande();
+		$this->load->view('backoffice/historique',$data);
+	}
+	public function statistique()
+	{
+		$data = array();
+		$data = $this->Statistique->statistique_user();
+		$this->load->view('backoffice/statistique',$data);
+	}
 }
