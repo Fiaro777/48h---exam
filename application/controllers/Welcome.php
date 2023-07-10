@@ -39,4 +39,12 @@ class Welcome extends CI_Controller {
 		$data = $this->Statistique->statistique_user();
 		$this->load->view('backoffice/statistique',$data);
 	}
+	public function CRUDplat()
+	{
+		$this->load->view('backoffice/CRUDplat');
+	}
+	public function c_plat()
+	{
+		$this->load->view('backoffice/createplat');
+	}
 }

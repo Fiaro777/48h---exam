@@ -7,8 +7,17 @@
     <h1>Inserer des donnees</h1>
     <form method="post" action="<?php echo site_url('backoffice/RegimeController/C_plat'); ?>">
         <input type="text" name="nomPlat" placeholder="Entrez le nom du plat" required>
-        <input type="radio" name="typeRegime" id="">Gain</
-        <!-- Ajoutez d'autres champs de formulaire ici -->
+            <!-- Ajoutez d'autres champs de formulaire ici -->
+  <label>
+    <input type="radio" name="choix" value="gain" checked>
+    Gain
+  </label>
+  <br>
+  <label>
+    <input type="radio" name="choix" value="perte">
+    Perte
+  </label>
+  <br>
 
         <input type="submit" value="Insérer">
     </form>
