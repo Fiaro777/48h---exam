@@ -17,7 +17,7 @@
 <body class="hold-transition lockscreen">
 
     <section class="login-clean">
-    <form action="<?php echo site_url("backoffice/LoginAdminController/login"); ?>" method="post">
+    <form action="<?php echo site_url("welcome/login"); ?>" method="post">
             <div class="illustration">
                 <h1 style="color: var(--dark);font-size: 35px;">Login Admin</h1>
             </div>

@@ -8,39 +8,39 @@ class LoginAdminController extends CI_Controller
           parent::__construct();
           $this->load->model('backoffice/LoginAdmin', 'LoginAdmin');
      }
-     
-     //affiche l'accueil du client 
-     public function accueil()
+       public function accueil()
      {
           echo 'Mety';
           $this->load->view('backoffice/menu');
      }
-     //authentification côté client
+
      public function login()
      {
          
-          if ($this->input->server('REQUEST_METHOD') == 'POST') {
-               $contact = $this->input->post('contact');
-               $pass = $this->input->post('mdp');
+          // if ($this->input->server('REQUEST_METHOD') == 'POST') {
+          //      $contact = $this->input->post('contact');
+          //      $pass = $this->input->post('mdp');
 
-               $exists = $this->LoginAdmin->login($contact, $pass);
+          //      $exists = $this->LoginAdmin->login($contact, $pass);
 
-               if (isset($exists)) {
-                    // $_SESSION['user'] = $exists;
-                    $this->load->library('form_validation');
-                    $this->load->library('session');
-                    $this->session->set_flashdata('idAdmin',$exists);  
-                    $refa_ampesaina_le_session=$this->session->flashdata('idAdmin');          
-                    $this->accueil();
+          //      if (isset($exists)) {
+          //           // $_SESSION['user'] = $exists;
+          //           $this->load->library('form_validation');
+          //           $this->load->library('session');
+          //           $this->session->set_flashdata('idAdmin',$exists);  
+          //           $data['idAdmin'] = $this->session->userdata('user_id');
+               
+                    $this->load->view('backoffice/menu');
+
                     
 
-               } else {
-                    $data['error'] = " Veuillez vérifier vos informations";
-                    $this->load->view('admin/login', $data);
-               }
-          } else 
-          {
-               $this->load->view('admin/login');
-          }
+          //      } else {
+          //           $data['error'] = " Veuillez vérifier vos informations";
+          //           $this->load->view('backoffice/login', $data);
+          //      }
+          // } else 
+          // {
+          //      $this->load->view('backoffice/login');
+          // }
      }
 }

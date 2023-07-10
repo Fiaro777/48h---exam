@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Achat Vente</title>
+  <title>BackOffice du site Regime</title>
 <?php $this->load->helper('url');?>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -19,31 +19,49 @@
 <!-- Automatic element centering -->
 <div class="lockscreen-wrapper">
   <div class="lockscreen-logo">
-    <a span><b>Historique </b>de commande</span>
+    <a span><b>Statistique </b>utilisateur</span>
   </div>
  
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
       <div class="card-body">
-      <h2 style="text-align:center">Liste demande</h2> 
+      <h2 style="text-align:center">Inscrit</h2> 
 
         <table id="example2" class="table table-bordered table-hover">
           <thead>
           <tr>
-            <th>Regime</th>
-            <th>Prix</th>
-            <th>Client</th>
-            <th>Date</th>
+            <th>Nombre d'utilisateur</th>
             </tr>
             </thead>
           <tbody>
-          <?php foreach($historique as $row){ ?>
+          <?php foreach($numUser as $row){ ?>
           <tr>
-            <td><?php echo $row['regime'] ?></td>
-            <td><?php echo $row['prixRegime'] ?> Ar</td>
-            <td><?php echo $row['username'] ?></td>
-            <td><?php echo $row['dateCommande'] ?></td>
+            <td><?php echo $row['numUser'] ?></td>
+
+            <tr>
+            <?php } ?>
+          </tbody>
+          </table>
+
+<!-- -->
+
+<section class="content">
+      <div class="container-fluid">
+      <div class="card-body">
+      <h2 style="text-align:center">Actif</h2> 
+
+        <table id="example2" class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Nombre d'utilisateur actif</th>
+            </tr>
+            </thead>
+          <tbody>
+          <?php foreach($numUserActif as $row){ ?>
+          <tr>
+            <td><?php echo $row['actif'] ?></td>
+
             <tr>
             <?php } ?>
           </tbody>

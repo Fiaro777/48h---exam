@@ -4,13 +4,13 @@ class Statistique extends CI_Model
 {
 
      public function statistique_user() {
-          $sql = "SELECT count(idUser) from user";
+          $sql = "SELECT count(idUser) as numUser from user";
           $base= $this->db;
           $query = $base->query($sql);
           return $query->result_array();
      }
      public function statistique_active_user(){
-        $sql = "SELECT count(idUser) from user where etatRegime='active'";
+        $sql = "SELECT count(idUser) as actif from user where etatRegime='en cours'";
         $base= $this->db;
         $query = $base->query($sql);
         return $query->result_array();

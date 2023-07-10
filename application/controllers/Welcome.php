@@ -18,6 +18,12 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function __construct()
+	{
+		 parent::__construct();
+		 $this->load->model('backoffice/LoginAdmin', 'LoginAdmin');
+		 $this->load->model('backoffice/Statistique', 'Statistique');
+	}
 	public function index()
 	{
 		$this->load->view('home');
@@ -26,6 +32,37 @@ class Welcome extends CI_Controller {
 	public function logAdmin()
 	{
 		$this->load->view('backoffice/login');
+	}
+	public function home(){
+		$this->load->view('backoffice/menu');
+	}
+	public function login()
+	{
+		 if ($this->input->server('REQUEST_METHOD') == 'POST') {
+			$this->load->model('backoffice/LoginAdmin','login');
+		      $contact = $this->input->post('contact');
+		      $pass = $this->input->post('mdp');
+		      $exists = $this->LoginAdmin->login($contact, $pass);
+
+		      if (isset($exists)) {
+		           // $_SESSION['user'] = $exists;
+		           $this->load->library('form_validation');
+		           $this->load->library('session');
+		           $this->session->set_flashdata('idAdmin',$exists);  
+		           $data['idAdmin'] = $this->session->userdata('user_id');
+			  
+				   $this->home();
+
+				   
+
+		      } else {
+		           $data['error'] = " Veuillez vérifier vos informations";
+		           $this->load->view('backoffice/login', $data);
+		      }
+		 } else 
+		 {
+		      $this->load->view('backoffice/login');
+		 }
 	}
 	public function historique()
 	{
@@ -37,7 +74,9 @@ class Welcome extends CI_Controller {
 	public function statistique()
 	{
 		$data = array();
-		$data = $this->Statistique->statistique_user();
+		$data['numUser'] = $this->Statistique->statistique_user();
+		$data['numUserActif'] = $this->Statistique->statistique_active_user();
+
 		$this->load->view('backoffice/statistique',$data);
 	}
 	public function CRUDplat()
