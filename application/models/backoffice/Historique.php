@@ -9,5 +9,4 @@ class LoginAdmin extends CI_Model
           $query = $base->query($sql);
           return $query->result_array();
      }
-     public function historique_commande_date($date)
 }
