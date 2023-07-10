@@ -24,6 +24,10 @@
  
   <!-- START LOCK SCREEN ITEM -->
   <div class="lockscreen-item">
+<body>
+                <li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/logAdmin"); ?>">ADMIN</a></li>
+				<li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/logClient"); ?>">CLIENT</a></li>
+</body>
 
 
   </div>

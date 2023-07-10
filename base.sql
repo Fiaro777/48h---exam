@@ -19,6 +19,8 @@ create table user(
      etatRegime VARCHAR(10) 
 );
 
+insert into user values(1,'root@gmail.com','root','Nambinina','masculin',60,1.70,'nnh');
+
 create table plat(
     idPlat int primary key auto_increment,
     nomPlat Varchar(100),
