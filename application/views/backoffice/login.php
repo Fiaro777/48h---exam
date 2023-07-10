@@ -19,7 +19,7 @@
     <section class="login-clean">
     <form action="<?php echo site_url("welcome/login"); ?>" method="post">
             <div class="illustration">
-                <h1 style="color: var(--dark);font-size: 35px;">Login Admin</h1>
+                <h1 style="color: var(--dark);font-size: 35px;">Connection en tant qu'admin</h1>
             </div>
             <div class="form-group">
                 <p>Email</p><input name="email" class="form-control" type="email" value="admin@gmail.com">

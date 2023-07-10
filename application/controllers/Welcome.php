@@ -64,6 +64,7 @@ class Welcome extends CI_Controller {
 		 {
 		      $this->load->view('backoffice/login');
 		 }
+		}
 	public function logClient()
 	{
 		$this->load->view('Frontoffice/login');
@@ -96,7 +97,9 @@ class Welcome extends CI_Controller {
         $nomPlat = $this->input->post('nomPlat');
         $typeRegime = $this->input->post('typeRegime');
         $this->CRUDplat->createPlat($nomPlat, $typeRegime);
-		$this->load->view('backoffice/RUDplat');
+		$data['plats'] = $this->CRUDplat->getPlats();
+		$this->load->view('backoffice/RUDplat',$data);
+
     }
 
     public function editPlat($idPlat) {
