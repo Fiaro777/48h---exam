@@ -30,7 +30,8 @@ class Welcome extends CI_Controller {
 	public function historique()
 	{
 		$data = array();
-		$data = $this->Historique->historique_commande();
+		$this->load->model('backoffice/Historique');
+		$data['historique'] = $this->Historique->historique_commande();
 		$this->load->view('backoffice/historique',$data);
 	}
 	public function statistique()

@@ -6,7 +6,11 @@ class LoginAdmin extends CI_Model
           parent::__construct();
           $this->load->database(); // Charge la bibliothèque de la base de données
       }
-  
+      public function home()
+      {
+           $this->load->view('backoffice/menu');
+      }
+ 
 // fonction qui prend un client si le compte existe dans la base
      public function login($mail, $password) {
           $sql = "SELECT idAdmin FROM Admin WHERE email = '".$mail."'";
@@ -15,6 +19,7 @@ class LoginAdmin extends CI_Model
           if($array->result_array())
           {
                return 1;
+               $this->home();
           }
           $data = $this->db->query($sql);
           return 0;

@@ -13,7 +13,7 @@ class LoginAdminController extends CI_Controller
      public function accueil()
      {
           echo 'Mety';
-          $this->load->view('admin/accueil');
+          $this->load->view('backoffice/menu');
      }
      //authentification côté client
      public function login()
@@ -31,9 +31,9 @@ class LoginAdminController extends CI_Controller
                     $this->load->library('session');
                     $this->session->set_flashdata('idAdmin',$exists);  
                     $refa_ampesaina_le_session=$this->session->flashdata('idAdmin');          
-                    //$this->accueil();
+                    $this->accueil();
                     
-                     echo $refa_ampesaina_le_session;
+
                } else {
                     $data['error'] = " Veuillez vérifier vos informations";
                     $this->load->view('admin/login', $data);

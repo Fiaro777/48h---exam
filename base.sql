@@ -1,4 +1,4 @@
--- Active: 1681575766731@@127.0.0.1@3306@bongbong
+-- Active: 1688993187804@@127.0.0.1@3306@site_regime
 create database site_regime;
 Use site_regime;
 create table admin(
@@ -57,4 +57,13 @@ create table commande(
 create table code(
     idCode  int primary key auto_increment,
     valeurCode VARCHAR(5)
+);
+
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+        `id` varchar(40) NOT NULL,
+        `ip_address` varchar(45) NOT NULL,
+        `timestamp` int(10) unsigned DEFAULT 0 NOT NULL,
+        `data` blob NOT NULL,
+        PRIMARY KEY (id),
+        KEY `ci_sessions_timestamp` (`timestamp`)
 );
