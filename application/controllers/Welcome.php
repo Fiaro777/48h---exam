@@ -27,6 +27,10 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('backoffice/login');
 	}
+	public function logClient()
+	{
+		$this->load->view('Frontoffice/login');
+	}
 	public function historique()
 	{
 		$data = array();
