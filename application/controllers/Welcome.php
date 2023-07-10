@@ -23,6 +23,7 @@ class Welcome extends CI_Controller {
 		 parent::__construct();
 		 $this->load->model('backoffice/LoginAdmin', 'LoginAdmin');
 		 $this->load->model('backoffice/Statistique', 'Statistique');
+		 $this->load->model('backoffice/CRUDplat');
 	}
 	public function index()
 	{
@@ -79,12 +80,40 @@ class Welcome extends CI_Controller {
 
 		$this->load->view('backoffice/statistique',$data);
 	}
-	public function CRUDplat()
-	{
-		$this->load->view('backoffice/CRUDplat');
-	}
-	public function c_plat()
-	{
-		$this->load->view('backoffice/createplat');
-	}
+	public function listPlat() {
+        $data['plats'] = $this->CRUDplat->getPlats();
+        $this->load->view('backoffice/RUDplat', $data);
+    }
+
+    public function createPlat() {
+        $this->load->view('backoffice/Cplat');
+    }
+
+    public function storePlat() {
+        $nomPlat = $this->input->post('nomPlat');
+        $typeRegime = $this->input->post('typeRegime');
+        $this->CRUDplat->createPlat($nomPlat, $typeRegime);
+		$this->load->view('backoffice/RUDplat');
+    }
+
+    public function editPlat($idPlat) {
+        $data['plat'] = $this->CRUDplat->getPlat($idPlat);
+        $this->load->view('backoffice/Uplat', $data);
+    }
+
+    public function updatePlat($idPlat) {
+        $nomPlat = $this->input->post('nomPlat');
+        $typeRegime = $this->input->post('typeRegime');
+        $this->CRUDplat->updatePlat($idPlat, $nomPlat, $typeRegime);
+		$this->load->view('backoffice/RUDplat');
+		
+    }
+
+    public function deletePlat($idPlat) {
+        $this->CRUDplat->deletePlat($idPlat);
+		$data['plats'] = $this->CRUDplat->getPlats();
+		$this->load->view('backoffice/RUDplat',$data);
+
+    }
+
 }

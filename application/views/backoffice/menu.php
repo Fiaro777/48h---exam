@@ -9,7 +9,7 @@
 <body>
                 <li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/historique"); ?>">historique</a></li>
 				<li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/statistique"); ?>">statistique</a></li>
-				<li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/CRUDplat"); ?>">statistique</a></li>
+				<li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/listPlat"); ?>">CRUD plat</a></li>
 			</body>
 
 </html>

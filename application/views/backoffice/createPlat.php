@@ -17,6 +17,8 @@
     <input type="radio" name="choix" value="perte">
     Perte
   </label>
+  <input type="number" name="prixPlat" placeholder="Entrez le prix du plat" required>
+
   <br>
 
         <input type="submit" value="Insérer">
