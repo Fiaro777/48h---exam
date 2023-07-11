@@ -72,12 +72,8 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/historique"); ?>">Historique</a></li>
-				<li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/statistique"); ?>">Statistique</a></li>
-				<li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/listPlat"); ?>">CRUD Plat</a></li>
-
-
-              </ul>
+                <li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/pending"); ?>">Notification</a></li>
+             </ul>
             </div>
           </li>
         </ul>
