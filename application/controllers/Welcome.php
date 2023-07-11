@@ -91,6 +91,10 @@ class Welcome extends CI_Controller {
         $data['plats'] = $this->CRUDplat->getPlats();
         $this->load->view('backoffice/RUDplat', $data);
     }
+	public function listSport() {
+        $data['sport'] = $this->CRUDplat->getSport();
+        $this->load->view('backoffice/Cregime', $data);
+    }
 	public function listIngredient() {
         $data['ingredients'] = $this->CRUDplat->getPlats();
         $this->load->view('backoffice/Cplat', $data);
@@ -113,6 +117,22 @@ class Welcome extends CI_Controller {
         $this->CRUDplat->createPlat($nomPlat, $typeRegime);
 		$data['plats'] = $this->CRUDplat->getPlats();
 		$this->load->view('backoffice/RUDplat',$data);
+
+    }
+
+	public function storeRegime() {
+        $idPlat = $this->input->post('idPlat');
+        $typeRegime = $this->input->post('typeRegime');
+		$idSport = $this->input->post('idSport');
+        $dureeSport = $this->input->post('dureeSport');
+        $minPoids = $this->input->post('minPoids');
+        $maxPoids = $this->input->post('maxPoids');
+        $prixRegime = $this->input->post('prixRegime');
+
+
+        $this->CRUDplat->createRegime($idPlat, $typeRegime,$idSport,$dureeSport,$minPoids,$maxPoids,$prixRegime);
+		$data['regimes'] = $this->CRUDplat->getRegime();
+		$this->load->view('backoffice/RUDRegime',$data);
 
     }
 	
@@ -178,6 +198,18 @@ class Welcome extends CI_Controller {
         $this->CRUDplat->deletePlat($idPlat);
 		$data['plats'] = $this->CRUDplat->getPlats();
 		$this->load->view('backoffice/RUDplat',$data);
+
+    }
+	public function deconnexion() {
+		$this->load->library('session');
+		$this->session->sess_destroy();
+		redirect('login');
+	}
+
+	public function AjouterRegime() {
+		$data['plats'] = $this->CRUDplat->getPlats();
+        $data['sports'] = $this->CRUDplat->getSport();
+		$this->load->view('backoffice/Cregime',$data);
 
     }
 

@@ -67,6 +67,7 @@
 				<li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/statistique"); ?>">Statistique</a></li>
 				<li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/activite"); ?>">Activités</a></li>
         <li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/listPlat"); ?>">CRUD Plat</a></li>
+        <h2><a href="<?php echo site_url("welcome/deconnexion"); ?>"><button type="button" class="btn btn-success btn-rounded btn-fw">deconnexion</button></a></h2></br>
 
               </ul>
             </div>
@@ -142,6 +143,7 @@
 	</div>
 	</div>
     </div>
+
 </div>
 	<!-- container-scroller -->
 	<!-- plugins:js -->

@@ -53,6 +53,27 @@ class CRUDPlat extends CI_Model {
             return $query->result();
         }
     
+       public function getSport() {
+            return $this->db->get('sport')->result();
+        }
+        public function getRegime() {
+            $query = $this->db->query("SELECT p.nomPlat as plat,s.nomSport as sport,r.PrixRegime as prix,r.minPoids as min,r.maxPoids as max,r.dureeRegime as duree from regime as r join sport as s on s.idSport = r.idSport join plat as p on p.idPlat = r.idPlat");
+            return $query->result();
+        }
+
+
+        public function createRegime($idPlat, $typeRegime,$idSport,$dureeSport,$minPoids,$maxPoids,$prixRegime) {
+            $data = array(
+                'idPlat' => $idPlat,
+                'typeRegime' => $typeRegime,
+                'idSport' => $idSport,
+                'dureeRegime' =>$dureeSport,
+                'minPoids' =>$minPoids,
+                'maxPoids' =>$maxPoids,
+                'prixRegime' =>$prixRegime
+            );
+            $this->db->insert('regime', $data);
+        }
     
 
     

@@ -70,48 +70,53 @@
         </ul>
       </nav>
 
-			<div class="main-panel">
-				<div class="content-wrapper">
-					<div class="row">
-						<div class="col-lg-6 grid-margin stretch-card">
-							<div class="card">
-								<div class="card-body">
-								<h4 class="card-title">Liste de client</h4>
-									<div class="table-responsive">
-									<table class="table">
-										<center>
-                            
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>Regime</th>
-                    <th>Prix</th>
-                    <th>Client</th>
-                    <th>Date</th>
-                    </tr>
-                    </thead>
-                  <tbody>
-                  <?php foreach($historique as $row){ ?>
-                  <tr>
-                    <td><?php echo $row['regime'] ?></td>
-                    <td><?php echo $row['prixRegime'] ?> Ar</td>
-                    <td><?php echo $row['username'] ?></td>
-                    <td><?php echo $row['dateCommande'] ?></td>
-                    <tr>
-                    <?php } ?>
+			<div class="col-lg-6 grid-margin stretch-card">
+            	<div class="card">
+                	<div class="card-body">
+						<h4 class="card-title"></h4>
+						<p class="card-description">
+						</p>
+						<center>
+            <table id="example2" class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Nom du plat</th>
+            <th>Type de régime</th>
+            <th>Sport</th>
+            <th>Prix de Regime</th>
+        </tr>
+            </thead>
+          <tbody>
+          <?php foreach ($regimes as $regime): ?>
+            <tr>
+                <td><?php echo $regime->plat; ?></td>
+                <td><?php echo $regime->sport; ?></td>
+                <td><?php echo $regime->prix; ?></td>
+                <td><?php echo $regime->min; ?></td>
+                <td><?php echo $regime->max; ?></td>
+                <td><?php echo $regime->duree; ?></td>
+
+                <td>
+
+                    <h2><a href="<?php echo site_url('welcome/editPlat/' . $plat->idPlat); ?>"><button type="button" class="btn btn-success btn-rounded btn-fw">Modifier</button></a></h2></br>
+                    <h2> <a href="<?php echo site_url('welcome/deletePlat/' . $plat->idPlat); ?>"><button type="button" class="btn btn-success btn-rounded btn-fw">Supprimer</button></a></h2></br>
+
+                </td>
+            </tr>
+        <?php endforeach; ?>
           </tbody>
           </table>
-										</center>
-									</table>
-							</div>
-						</div>
-					</div>
-			</div>
-			
+						</center>
+                	</div>
+                  <h2><a href="<?php echo site_url("welcome/createPlat"); ?>"><button type="button" class="btn btn-success btn-rounded btn-fw">Ajouter un plat</button></a></h2></br>
+
+              	</div>
+            </div>
 		</div>
 	</div>
 	</div>
     </div>
+
 
 </div>
 	<!-- container-scroller -->
