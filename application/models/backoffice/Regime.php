@@ -6,8 +6,7 @@ class Regime extends CI_Model
      public function createPlat($donnees) {
           
                $this->db->insert('Regime', $donnees); 
-               return $this->db->insert_id();
-           
+               return $this->db->insert_id();   
        }
        ?>
      }

@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,24 +57,12 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/historique"); ?>">Historique</a></li>
+              <li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/historique"); ?>">Historique</a></li>
 				<li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/statistique"); ?>">Statistique</a></li>
 				<li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/listPlat"); ?>">CRUD Plat</a></li>
 
 
               </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <span class="icon-notification"></span>
-              <span class="menu-title">Notification</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/pending"); ?>">Notification</a></li>
-             </ul>
             </div>
           </li>
         </ul>
@@ -85,8 +74,6 @@
 						<div class="col-lg-6 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<div class="table-responsive">
-									<table class="table">
 										<center>
                             
                     <section class="content">
@@ -108,15 +95,69 @@
                 </select>
             </div>
             <div class="form-group">
-				<button class="btn btn-primary btn-block" type="submit" style="background: rgb(158,244,71);">Ajouter</button>
-			</div
-            <?php if (isset($error)){  ?>
-                <center><a class="alert-danger" href="#"><?= $error ?></a></center>
-                
-            <?php }   ?>
-        </form>
-    </section>
-        
+            <button class="btn btn-primary btn-block" type="submit" style="background: rgb(158,244,71);">Se connecter</button>
+            </div>  
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="col-lg-6 grid-margin stretch-card">
+            	<div class="card">
+              <div class="card-body">
+              <section class="content">
+              <h2 style="text-align:center">Ajouter des ingredients</h2> 
+
+<form action="<?php echo site_url("welcome/storePlat"); ?>" method="post">
+
+<div id="container">
+  <a id="add-link" href="#" onclick="addSelect(); return false;">Ajouter un ingredient</a>
+</div>
+
+</div>
+<script>
+  function addSelect() {
+    var selectElement = document.createElement("select");
+    selectElement.name = "dynamic_input[]";
+    selectElement.className = "form-control";
+    var divElement = document.createElement("div");
+     divElement.className = "form-group";
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        var ingredients = JSON.parse(xhr.responseText);
+        ingredients.forEach(function(ingredient) {
+          var optionElement = document.createElement("option");
+          optionElement.value = ingredient.nomIngredient;
+          optionElement.text = ingredient.nomIngredient;
+          selectElement.appendChild(optionElement);
+        });
+
+        var container = document.getElementById("container");
+        var inputElement = document.createElement("input");
+                    inputElement.name = "quantite[]";
+                    inputElement.className = "form-control";
+                    inputElement.type = "number";
+                    inputElement.placeholder = "Quantité";
+                    divElement.appendChild(inputElement);
+                    divElement.appendChild(selectElement);
+        var addLink = document.getElementById("add-link");
+        container.before(divElement);
+
+      }
+    };
+    xhr.open("GET", "<?php echo site_url("welcome/getIngredients"); ?>", true);
+    xhr.send();
+  }
+
+
+
+</script>
+          </section>
+          <button class="btn btn-primary btn-block" type="submit" style="background: rgb(158,244,71);">Se connecter</button>
+          </form>
+
+		</div>
+	</div>
 		</div>
 	</div>
 	</div>
@@ -140,5 +181,8 @@
 </body>
 
 </html>
+
+
+
 
 

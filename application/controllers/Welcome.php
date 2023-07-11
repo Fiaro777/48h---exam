@@ -81,14 +81,28 @@ class Welcome extends CI_Controller {
 		$data = array();
 		$data['numUser'] = $this->Statistique->statistique_user();
 		$data['numUserActif'] = $this->Statistique->statistique_active_user();
-
 		$this->load->view('backoffice/statistique',$data);
+	}
+	public function activite()
+	{
+		$this->load->view('backoffice/activite');
 	}
 	public function listPlat() {
         $data['plats'] = $this->CRUDplat->getPlats();
         $this->load->view('backoffice/RUDplat', $data);
     }
+	public function listIngredient() {
+        $data['ingredients'] = $this->CRUDplat->getPlats();
+        $this->load->view('backoffice/Cplat', $data);
+    }
 
+	public function getIngredients()
+	{
+		$ingredients = $this->db->get('ingredient')->result();
+		header('Content-Type: application/json');
+		echo json_encode($ingredients);
+	}
+	
     public function createPlat() {
         $this->load->view('backoffice/Cplat');
     }
@@ -101,6 +115,51 @@ class Welcome extends CI_Controller {
 		$this->load->view('backoffice/RUDplat',$data);
 
     }
+	
+	public function storeComposition()
+    {
+        
+        $this->load->model('CRUDplat');
+
+        // Données des ingrédients à insérer
+        $selectedValues = $this->input->post('dynamic_input');
+        $quantities = $this->input->post('quantite');
+        
+        $data = array();
+        for ($i = 0; $i < count($selectedValues); $i++) {
+            $data[] = array(
+                'plat_id' => $platId,
+                'ingredient' => $selectedValues[$i],
+                'quantite' => $quantities[$i]
+            );
+        }
+
+        $this->CRUDplat->insertPlat($data);
+    }
+
+	public function displayChart()
+    {
+        
+	   $this->load->model('CRUDplat');
+
+	   $genderData = $this->CRUDplat->getChartGenre();
+
+	   header('Content-Type: application/json');
+	   echo json_encode($genderData);
+	}
+	
+	public function ActiveChart()
+    {
+        
+	   $this->load->model('CRUDplat');
+
+	   $ActiveData = $this->CRUDplat->getChartActive();
+
+   header('Content-Type: application/json');
+	   echo json_encode($ActiveData);
+	}
+
+
 
     public function editPlat($idPlat) {
         $data['plat'] = $this->CRUDplat->getPlat($idPlat);

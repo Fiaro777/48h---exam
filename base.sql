@@ -13,10 +13,10 @@ create table user(
      email Varchar(100),
      password Varchar(100),
      username Varchar(100),
-     genre Varchar(100),
+     genre ENUM('f','m'),
      poids int,
      taille double,
-     etatRegime VARCHAR(10) 
+     etatRegime enum('en cours','terminer') 
 );
 
 insert into user values(1,'root@gmail.com','root','Nambinina','masculin',60,1.70,'nnh');
@@ -24,7 +24,19 @@ insert into user values(1,'root@gmail.com','root','Nambinina','masculin',60,1.70
 create table plat(
     idPlat int primary key auto_increment,
     nomPlat Varchar(100),
-    typeRegime VARCHAR(10)
+    typeRegime VARCHAR(10),
+);
+-- table combination plat(liste d'ingredient)
+create table combinations(
+    idCombination int primary key AUTO_INCREMENT,
+    idPlat int,
+    idIngredient int,
+    pourcentageIng int
+);
+create table ingredient(
+    idIngredient int PRIMARY key AUTO_INCREMENT,
+    nomIngredient VARCHAR(500),
+    typeIngredient ENUM('viande','vegetal')
 );
 
 create table sport(
@@ -44,7 +56,6 @@ create table regime(
     minPoids int,
     maxPoids int,
     prixRegime double
-
 );
 
 create table commande(

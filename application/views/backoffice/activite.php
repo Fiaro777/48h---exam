@@ -83,8 +83,8 @@
                     <section class="content">
                     <div class="container-fluid">
                       <div class="card-body">
-                          <h2 style="text-align:center">Inscrit</h2> 
-                        <canvas id="genderChart"></canvas>
+                          <h2 style="text-align:center">En cours</h2> 
+                        <canvas id="ActiveChart"></canvas>
                         <canvas id="pieChart"></canvas>
                         <script>
                             // Effectuer une requête AJAX pour récupérer les données sur le genre des utilisateurs
@@ -92,36 +92,32 @@
                             xhr.onreadystatechange = function() {
                                 if (xhr.readyState === 4 && xhr.status === 200) {
                                     var response = JSON.parse(xhr.responseText);
-                                    var genderData = response;
+                                    var ActiveData = response;
 
                                     // Préparation des données pour le graphique
                                     var labels = [];
                                     var values = [];
-                                    genderData.forEach(function(data) {
-                                        labels.push(data.genre);
+                                    ActiveData.forEach(function(data) {
+                                        labels.push(data.etatRegime);
                                         values.push(data.num);
                                     });
 
                                     // Création du graphique
-                                    var ctx = document.getElementById('genderChart').getContext('2d');
+                                    var ctx = document.getElementById('ActiveChart').getContext('2d');
                                     var genderChart = new Chart(ctx, {
                                         type: 'pie',
                                         data: {
                                             labels: labels,
                                             datasets: [{
-                                                label: 'Nombre d\'utilisateurs',
+                                                label: 'Etat de regime',
                                                 data: values,
                                                 backgroundColor: [
-                                                    'rgba(255, 99, 132, 0.2)',
-                                                    'rgba(54, 162, 235, 0.2)',
-                                                    'rgba(255, 206, 86, 0.2)'
+                                                  '#57b657',   // Vert
+                                                  '#4b49ac'    // Violet
                                                 ],
                                                 borderColor: [
-                                                    'rgba(255, 99, 132, 1)',
-                                                    'rgba(54, 162, 235, 1)',
-                                                    'rgba(255, 206, 86, 1)'
-                                                ],
-                                                borderWidth: 1
+                                                  '#57b657',   // Vert
+                                                  '#4b49ac'    // Violet                                                borderWidth: 1
                                             }]
                                         },
                                         options: {
@@ -131,7 +127,7 @@
                                 }
                             };
                             
-                            xhr.open("GET", "<?php echo site_url('welcome/displayChart'); ?>", true);
+                            xhr.open("GET", "<?php echo site_url('welcome/ActiveChart'); ?>", true);
                             xhr.send();
 
                         </script>
