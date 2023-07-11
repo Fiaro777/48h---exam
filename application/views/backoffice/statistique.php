@@ -63,7 +63,7 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/historique"); ?>">Historique</a></li>
+        <li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/historique"); ?>">Historique</a></li>
 				<li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/statistique"); ?>">Statistique</a></li>
 				<li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/activite"); ?>">Activités</a></li>
         <li class="nav-item"> <a class="nav-link"  href="<?php echo site_url("welcome/listPlat"); ?>">CRUD Plat</a></li>
@@ -112,15 +112,14 @@
                                                 label: 'Nombre d\'utilisateurs',
                                                 data: values,
                                                 backgroundColor: [
-                                                    'rgba(255, 99, 132, 0.2)',
-                                                    'rgba(54, 162, 235, 0.2)',
-                                                    'rgba(255, 206, 86, 0.2)'
+                                                  'rgba(75, 73, 172, 1)',
+                                                  'rgba(87, 182, 87, 1)'
                                                 ],
                                                 borderColor: [
-                                                    'rgba(255, 99, 132, 1)',
-                                                    'rgba(54, 162, 235, 1)',
-                                                    'rgba(255, 206, 86, 1)'
+                                                  'rgba(75, 73, 172, 1)',
+                                                  'rgba(87, 182, 87, 1)'
                                                 ],
+
                                                 borderWidth: 1
                                             }]
                                         },

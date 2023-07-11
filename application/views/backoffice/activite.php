@@ -112,12 +112,14 @@
                                                 label: 'Etat de regime',
                                                 data: values,
                                                 backgroundColor: [
-                                                  '#57b657',   // Vert
-                                                  '#4b49ac'    // Violet
+                                                  'rgba(75, 73, 172, 1)',
+                                                  'rgba(87, 182, 87, 1)'
                                                 ],
                                                 borderColor: [
-                                                  '#57b657',   // Vert
-                                                  '#4b49ac'    // Violet                                                borderWidth: 1
+                                                  'rgba(75, 73, 172, 1)',
+                                                  'rgba(87, 182, 87, 1)'
+                                                ],
+                                                borderWidth: 1
                                             }]
                                         },
                                         options: {
